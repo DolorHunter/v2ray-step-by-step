@@ -196,3 +196,5 @@ backend vmess
     * 中间人看来，该方法在建立 TLS 连接后，比 wss 少一次握手，即 TLS 建立后直接发送请求并获得响应，该行为是符合正常的 HTTPS 请求的。
     * 主动探测时，如 TLS 建立后发送 HTTP 请求，则被发给 Web 服务器按正常 HTTP 请求处理。如发送非 HTTP 请求，会被发给 V2Ray 处理，如 Vmess 认证失败，连接将被关闭，向 HTTPS 服务器发送非 HTTPS 请求，连接被关闭是正常的行为。
     * 如果您还认为存在被检测的的可能，请提出检测方法。
+
+*注：启用 CDN 可能会导致 VMESS 包被丢弃，但网页能够正常访问。可以解除 CDN 或者参考 [CDN章节](https://guide.v2fly.org/advanced/cdn.html) 解决。
