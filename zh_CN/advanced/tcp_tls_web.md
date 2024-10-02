@@ -16,6 +16,8 @@
 
 HaProxy 监听 443 端口，处理 TLS 之后，将 HTTP 流量交由 Web 服务器处理，非 HTTP 流量交由 V2Ray 按 Vmess 处理。
 
+![Difference between TCP TLS WEB and WS TLS WEB](../resource/images/diff_between_tcp_tls_web_and_wss.png)
+
 ## 实现
 
 本次方案使用 HaProxy，Caddy/Nginx（Web 服务器的使用不是本教程的重点，可以用 httpd 等替代），V2Ray，服务器系统为 Debian 10。  
