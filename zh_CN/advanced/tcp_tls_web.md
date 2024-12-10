@@ -63,6 +63,10 @@ HaProxy 监听 443 端口，处理 TLS 之后，将 HTTP 流量交由 Web 服务
 
 Caddy 直接替换
 ```cfg
+example.com {
+	redir https://example.com
+}
+
 http://example.com:8080 {
     root /var/www/html
 }
@@ -70,6 +74,13 @@ http://example.com:8080 {
 
 Nginx 在 http{} 里面添加
 ```conf
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+
+  return 301 https://$host$request_uri;
+}
+
 server {
   listen 8080;
   server_name example.com;
@@ -82,6 +93,8 @@ server {
 * 实际服务请根据需要部署，也可以用 httpd 之类的替代
 
 * 似乎很多 Trojan 教程直接监听 80 端口，其实很多 HTTPS 网站 80 端口通常是重定向到 HTTPS
+
+* 注：需要配置 HTTPS 重定向，否则 acme.sh 无法更新证书。
 
 6. 修改 HaProxy 配置文件。
 
