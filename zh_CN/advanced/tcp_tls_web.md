@@ -64,7 +64,7 @@ HaProxy 监听 443 端口，处理 TLS 之后，将 HTTP 流量交由 Web 服务
 Caddy 直接替换
 ```cfg
 example.com {
-	redir https://example.com
+    redir https://example.com
 }
 
 http://example.com:8080 {
